@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="小V铺,商城,wechat,weixin,微信,微信商城">
+    <link rel="shortcut icon" href="http://cdn.xiaovpu.com/dev/xvp/img/xvp_logo.png">
+    <title>小V铺商家后台</title>
+    <link href="http://cdn.xiaovpu.com/dev/common/bundles/flatlab/css/lib.css?v=1.0" rel="stylesheet">
+    <link href="http://cdn.xiaovpu.com/dev/xvp/css/xvp_common.css?v=1.0" rel="stylesheet">
+    <link href="css/sentHistory.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+        <script src="href="http://cdn.xiaovpu.com/dev/common/flatlab/js/html5shiv.js"></script>
+        <script src="href="http://cdn.xiaovpu.com/dev/common/flatlab/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <section id="container">
+        <!--header start-->
+        <header class="header white-bg">
+            <div class="stroe_info pull-left">
+                <img src="http://xwp.oss-cn-beijing.aliyuncs.com/material/20160829-142828/83742977-038a-47ac-908e-4b2cceb0ff41.png" alt="我的店铺">
+                <span class="store_name">我的店铺</span>
+                <a class="fa fa-random" id="switch_store" href="/pc/store/select"> 切换店铺</a>
+            </div>				<!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!-- 此处放置通知元素 -->
+            </div>
+            <div class="top-nav ">
+                <ul class="nav pull-right top-menu">
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+                            <img alt="" src="">
+                            <span class="username">测试用户</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li style="display:none;">
+                                <a href="#"><i class="fa fa-cog"></i> 设置</a>
+                            </li>
+                            <li style="width:50%;">
+                                <a href="/pc/Seller/changephone"><i class=" fa fa-mobile"></i> 修改手机号</a>
+                            </li>
+                            <li style="width:50%;">
+                                <a href="/pc/Seller/changepwd"><i class="fa fa-key"></i> 修改密码</a>
+                            </li>
+                            <li>
+                                <a class="nav-logout" href="javascript:;"><i class="fa fa-power-off"></i> 退出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header><aside id="left-bar">
+            <div class="lb-list">
+                <ul>
+                    <li class="">
+                        <a href="/pc/store/pageManage">
+                            <i class="fa fa-dashboard"></i>
+                            <span>店铺概况</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/pc/store/homepage">
+                            <i class="fa fa-flag-checkered"></i>
+                            <span>店铺设置</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/pc/order/survey">
+                            <i class="fa fa-check-square-o"></i>
+                            <span>订单/交易</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/pc/account/income">
+                            <i class="fa fa fa-credit-card"></i><span>我的账户</span>
+                        </a>
+                    </li>
+                    <li class="active mgt">
+                        <a href="/pc/product/alllist"><i class="fa fa-barcode"></i><span>商品管理</span></a>
+                    </li>
+                    <li class="">
+                        <a href="/pc/Content/piclist"><i class="fa fa-picture-o"></i><span>素材管理</span></a>
+                    </li>
+                    <li class=""><a href="javascript:;"><i class="fa fa-sitemap"></i><span>分销商城</span></a></li>
+                </ul>
+            </div>
+            <div class="lb-list2">
+                <ul>
+                    <li class="active"><a href="/pc/product/alllist"><span>所有商品</span></a></li>
+                    <li class=""><a href="/pc/product/createbase"><span>添加商品</span></a></li>
+                    <li class=""><a href="/pc/product/saleinglist"><span>在售商品</span></a></li>
+                    <li class=""><a href="/pc/product/soldoutlist"><span>售罄商品</span></a></li>
+                    <li class=""><a href="/pc/product/tag"><span>商品标签</span></a></li>
+                    <li class="">
+                        <a href="/pc/product/logistictmpllist"><span>物流设置</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <!--BodyTable   bg-->
+                    <div class="col-sm-9" style="width: 100%">
+                        <!--tagList  and search   Bg-->
+                        <div class="row">
+                            <header class="panel-heading" style="border-color:transparent;margin-bottom:0px">
+                                <div class="inbox-head xdz-bg-transparent" style="padding: 0px; min-height:0px;">
+                                    <!--tagList  bg-->
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <input type="hidden">
+                                        <div style="width:500px;height: 35px;" id="tagContainer">
+                                            <button type="button" onclick="clickT('tag')" data-op="tag" data-id="0" class="btn btn-danger" style="font-size: 12px;">
+                                                全部
+                                            </button>
+                                            <button type="button" onclick="clickT('tag')" data-op="tag" data-id="89" style="font-size: 12px;" class="btn btn-primary">
+                                                标签
+                                            </button>
+                                            <button type="button" onclick="clickT('tag')" data-op="tag" data-id="88" style="font-size: 12px;" class="btn btn-primary">
+                                                测试商品
+                                            </button>
+                                            <button type="button" onclick="clickT('tag')" data-op="tag" data-id="82" style="font-size: 12px;" class="btn btn-primary">
+                                                标签4
+                                            </button>
+                                            <button type="button" onclick="clickT('tag')" data-op="tag" data-id="81" style="font-size: 12px;" class="btn btn-primary">
+                                                标签3
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--tagList  end-->
+                                    <!--search  Bg-->
+                                    <form class="pull-right position" action="#" style="margin-top: -35px;">
+                                        <div class="input-append">
+                                            <input id="searchInput" placeholder="输入名称搜索" class="sr-input sentHistory-searchInput-border xdz-display-b xdz-height30 xdz-bg-transparent" type="text" style="font-size:12px;">
+                                            <button type="button" class="btn sentHistory-searchBtn xdz-fs24 xdz-height30">
+                                                <i class="fa fa-search" onclick="clickT('search')" data-op="search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <!--searchList end-->
+                                </div>
+                            </header>
+                        </div>
+                        <!--tagList  and search   End-->
+                        <!--goodsListTable  Bg-->
+                        <section class="panel">
+                            <div class="row topb" style="height: auto;">
+                                <table class="table" style="font-size:14px;margin-bottom: 20px;">
+                                    <thead>
+                                        <tr style="color: #000;font-weight: bold;">
+                                            <th style="width: 25%">
+                                                <label style="margin-bottom: 0px; ">
+                                                    <input type="checkbox" value="remember-me" id="quan" style="vertical-align: top;padding-right:5px;">
+                                                    <span>商品</span>
+                                                </label>
+                                            </th>
+                                            <th>访问量</th>
+                                            <th>库存</th>
+                                            <th>总销量</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="content" id="content">
+                                        <tr class="goods" data-id="99 " data-name="有规格商品">
+                                            <td>
+                                                <label style="margin-bottom: 0px;">
+                                                    <input type="checkbox" value="99" class="inputQ">
+                                                    <img src="http://xwp.oss-cn-beijing.aliyuncs.com/material/20160827-140400/2810131a-073b-4fb7-9f9a-983dd3a42226.png" alt="" style="width: 70px;height: 70px;">
+                                                </label>
+                                                <span style="overflow : hidden;text-overflow: ellipsis;">有规格商品</span>
+                                            </td>
+                                            <td>pv:0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>2016-08-27 14:03:13</td>
+                                            <td>
+                                                <a href="javascript:;" onclick="layer('myModal5')">111分销设置</a> -<a href="javascript:;" onclick="    clickT('copy')" data-op="copy">复制</a> - <a href="javascript:;" onclick="    clickT('edit')" data-op="edit">编辑</a> - <a href="javascript:;" onclick="    clickT('del')" data-op="del">删除</a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                        <!--goodsListTable End-->
+                    </div>
+                    <!--BodyTable   End-->
+                    <!--HandleTool   Bg-->
+                    <div class="piliang" id="operateBar" style="width: 100%;float: right;">
+                        <div class="tools pull-left" style="margin-left:15px;">
+                            <!--<div onclick="clickT()" class="btn btn-white" type="button"
+                               style="margin-top:-6px;background:#f67a6e;color:#fff;" data-op="delD">批量删除</div>-->
+
+                            <button type="button" class="btn btn-danger" onclick="clickT('delD')" data-op="delD">
+                                批量删除
+                            </button>
+                        </div>
+                        <div class="pull-right" style="margin-right:15px;">
+                            <div class="page" id="page">
+                                <div class="dataTables_paginate paging_bootstrap pagination" style="padding: 0px;">
+                                    <ul>
+                                        <li class="prev disabled"><a href="#">首页</a></li>
+                                        <li class="prev disabled">
+                                            <a href="#">&lt;</a>
+                                        </li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="next"><a href="#">&gt; </a></li>
+                                        <li class="next"><a href="#">尾页 </a></li>
+                                        <li class="inp">到<input id="inp">页</li>
+                                        <li><a href="#">确定 </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+
+                    </div>
+                </div>
+                <!--HandleTool   End-->
+            </section>
+            <!--Tip for  select group begin-->
+            <section class="" id="tip-container">
+                <div class="panel-body">
+                    <div style="display: none;" class="modal fade modal-dialog-center" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content-wrap">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            ×
+                                        </button>
+                                        <h4 class="modal-title">选择分组</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <select></select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button onclick="confirm()" class="btn btn-warning" type="button" data-op="pop-sure">
+                                            确定
+                                        </button>
+                                        <button data-dismiss="modal" class="btn btn-default" type="button" data-op="pop-cancel">
+                                            取消
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Tip for  select group end-->
+        </section>
+        <div class="zhe hide" style="width: 100%; height: 100%; position: fixed;left: 0; top: 0; z-index: 100;"></div>
+    </section>
+    <div class="modal fade modal-dialog-center" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content-wrap">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Modal Tittle</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-sm-6 text-center">
+                            <div class="switch has-switch">
+                                <div class="switch-on switch-animate">
+                                    <input type="checkbox" checked="" data-toggle="switch">
+                                    <span class="switch-left">ON</span>
+                                    <label>&nbsp;</label>
+                                    <span class="switch-right">OFF</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="switch" data-animated="false">
+                            <input class="act-open" type="checkbox" data-toggle="switch" />
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">111</button>
+                        <button class="btn btn-warning" type="button"> 222</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.xiaovpu.com/dev/common/bundles/arttemplate/template.js?v=1.0" type="text/javascript"></script>
+    <script src="http://cdn.xiaovpu.com/dev/common/bundles/flatlab/js/lib.js?v=1.0" type="text/javascript"></script>
+    <script>
+        //初始化
+        $('.switch').bootstrapSwitch('setState', false);
+        $("#myModal5").modal("show");
+
+    </script>
+</body>
+</html>
